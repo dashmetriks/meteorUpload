@@ -1,0 +1,56 @@
+<head>
+  <title>meteor_upload</title>
+</head>
+
+<body>
+  <h1>Welcome to Meteor!</h1>
+
+
+     {{> hello}}
+<div>
+<ul>
+      {{#each images}}
+        {{> hellot}}
+      {{/each}}
+    </ul>
+
+ <form class="new-task">
+          <input type="text" name="title" placeholder="title" />
+          <input type="submit" id="submit"/>
+ </form>
+
+   <ul>
+      {{#each tasks}}
+        {{> task}}
+      {{/each}}
+    </ul>
+
+
+</div>
+</body>
+
+<template name="task">
+<li class="documentItem">
+<span class="text"><strong>{{title}}</strong><br> <img src="{{image}}"><br/> </span>
+</li>
+</template>
+<template name="hello">
+{{ name }}
+  <button>Click Me</button>
+  <p>You've pressed the button {{counter}} times.</p>
+  {{> upload_bootstrap multiple=false formData=myFormData }} 
+
+
+
+</template>
+<template name="hellot">
+<li class="documentItem">
+<a href="/upload/{{path}}"><img src="/upload/{{path}}"></a><br/>
+                    <label>{{ name }}</label> <br/>
+                    {{ size }} B<br>
+                    {{ _id }} <br>
+                    {{#if _id}}
+                        <a class="btn btn-danger deleteUpload">Delete</a>
+                    {{/if}}
+</li>
+</template>
